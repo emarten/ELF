@@ -4,11 +4,13 @@
 
 	$_ELF["_init"]=array();
 	$_ELF["_init"]['script']=$_SERVER["SCRIPT_FILENAME"];
-
+	$_ELF["_init"]["inc"]=dirname(__FILE__)."/";
 	function call($class,$method,$args)
 	{
-		echo "calls ".$method." on ".get_class($class);
-		print_r($args);
+		global $_ELF;
+		$class=get_class($class);
+		$_ELF->_DEBUG->add($class."->".$method."(".join('|',$args).");");
+		include($_ELF->_init["inc"]."methods/".$class."/".$class.".".$method.".method.php");
 	}
 
 	function autoloading($class)
@@ -34,7 +36,7 @@
 				$found=true;
 			}
 		}
-		if (isset($_ELF->_DEBUG))
+		if ($class!="ELF" AND $class!="DEBUG")
 		{
 			if ($found)
 			{
@@ -50,3 +52,5 @@
 
 	$_ELF=new ELF($_ELF);
 	$_ELF->start("hello","world");
+	$_ELF->test("hello","world");
+	$_ELF->die("MSG");

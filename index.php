@@ -1,4 +1,9 @@
 <?php
+
+	$_ELF=array(
+		"tmp"=>dirname(__FILE__)."/tmp/"
+	);
+
   include(dirname(__FILE__)."/elf-runtime/inc.php");
 
   echo "<hr />";
