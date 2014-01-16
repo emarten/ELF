@@ -7,8 +7,3 @@
 
   echo "<hr />";
   echo "<pre>".print_r($_ELF,true)."</pre>";
-
-/*
- *
- * lalala
- */
