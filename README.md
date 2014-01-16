@@ -1,0 +1,4 @@
+ELF
+===
+
+ELF Magic
