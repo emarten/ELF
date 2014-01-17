@@ -15,9 +15,15 @@ class ELF
 	public function start()
 	{
 		$this->_DEBUG=new DEBUG();
+		$this->_DEBUG->add("Starting ELF in mode: ".$this->_config["mode"]);
 	}
 	public function __call($method,$args)
 	{
 		call($this,$method,$args);
+	}
+	public function kill($msg)
+	{
+		$this->_DEBUG->add($msg);
+		die ( $this->_DEBUG->flush("<hr><h1>"."KILLED"."</h1><hr />") );
 	}
 }
