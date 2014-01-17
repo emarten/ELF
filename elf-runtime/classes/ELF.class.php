@@ -24,24 +24,23 @@ class ELF
 	}
 	public function kill($msg)
 	{
-		$this->_DEBUG->add($msg);
+		$this->_DEBUG->add("<b style=\"color:red;\">".$msg."</b>");
 		die ( $this->_DEBUG->flush("<hr><h1>"."KILLED"."</h1><hr />") );
+	}
+
+	public function shutdown()
+	{
+		if ($this->_config["tmp_clean"]){$this->tmp_clean();}
+		if ($this->_config["debug_flush"]) {
+			echo $this->_DEBUG->flush("<hr />"."<h1>DEBUG</h1>"."<hr />");
+		}
 	}
 
 	public function __destruct() {
 		echo ob_get_clean();
 		flush();
-		$od=opendir($this->_config["tmp"]);
-		while ($rd=readdir($od))
-		{
-			if ($rd!="." AND $rd!="..")
-			{
-				if (filemtime($this->_config["tmp"].$rd)<=  (time()-$this->_config["tmp_age"]) )
-				{
-					unlink($this->_config["tmp"].$rd);
-				}
-			}
-		}
-		closedir($od);
 	}
+
+
+
 }

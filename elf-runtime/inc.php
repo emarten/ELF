@@ -8,6 +8,13 @@
 	if (!isset($_ELF["mode"])) { $_ELF["mode"]="standalone"; }
 	if (!isset($_ELF["tmp_age"])) { $_ELF["tmp_age"]="600"; }
 	if (!isset($_ELF["debug"])) { $_ELF["debug"]=false; }
+	if (!isset($_ELF["tmp_clean"])) { if ($_ELF["debug"]) { $bool=true; } else { $bool=false; } $_ELF["tmp_clean"]=$bool; }
+
+	#if (!isset($_ELF["shutdown"])) { $_ELF["shutdown"]="\$_ELF->shutdown();"; }
+
+	if (!isset($_ELF["debug_flush"])) { $_ELF["debug_flush"]=false; }
+
+
 
 	function call($class,$method,$args)
 	{
@@ -93,5 +100,6 @@
 
 	$_ELF=new ELF($_ELF);
 	$_ELF->start($_ELF->_config["mode"]);
-	$_ELF->test('iamfirst');
-	#$_ELF->die("MSG");
+	$_ELF->test('');
+
+	$_ELF->shutdown();

@@ -1,14 +1,27 @@
 <?php
 
 	$_ELF=array(
+		"software"=>"modul_nummer_1",
 		"tmp"=>dirname(__FILE__)."/tmp/",
 		"debug"=>true,
-		"tmp_age"=>1
+		"debug_flush"=>true,
+		"tmp_age"=>1,
 	);
 
 	include(dirname(__FILE__)."/elf-runtime/inc.php");
 
+	/*
+		NEVER WRITE DOWN STH HERE
+	 */
 
-	echo $_ELF->_DEBUG->flush("<hr />"."<h1>DEBUG</h1>"."<hr />");
+
+
+
+
+
+
+
+
+
 
 

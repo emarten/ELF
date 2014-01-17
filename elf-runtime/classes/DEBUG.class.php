@@ -37,6 +37,7 @@ class DEBUG
 					flush();
 				}
 			fclose($fp);
+			echo "-------------------------------------------------------------------\n";
 			print_r($_ELF);
 			echo "</pre>";
 			echo $post;
@@ -47,4 +48,6 @@ class DEBUG
 			return '';
 		}
 	}
+
+
 }
