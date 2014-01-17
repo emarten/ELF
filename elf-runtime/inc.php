@@ -5,10 +5,9 @@
 	$_ELF["_init"]=array();
 	$_ELF["_init"]['script']=$_SERVER["SCRIPT_FILENAME"];
 	$_ELF["_init"]["inc"]=dirname(__FILE__)."/";
-	if (!isset($_ELF["mode"]))
-	{
-		$_ELF["mode"]="standalone";
-	}
+	if (!isset($_ELF["mode"])) { $_ELF["mode"]="standalone"; }
+	if (!isset($_ELF["tmp_age"])) { $_ELF["tmp_age"]="600"; }
+	if (!isset($_ELF["debug"])) { $_ELF["debug"]=false; }
 
 	function call($class,$method,$args)
 	{

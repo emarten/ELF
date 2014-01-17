@@ -4,6 +4,7 @@ class ELF
 {
 	public function __construct($data)
 	{
+		ob_start();
 		$this->_instance=date("d.m.Y-H.i.s").substr(microtime(true),strlen(time()))."_".md5(microtime(true).rand(1,9999));
 		$this->_init=$data["_init"];
 		unset($data["_init"]);
@@ -25,5 +26,22 @@ class ELF
 	{
 		$this->_DEBUG->add($msg);
 		die ( $this->_DEBUG->flush("<hr><h1>"."KILLED"."</h1><hr />") );
+	}
+
+	public function __destruct() {
+		echo ob_get_clean();
+		flush();
+		$od=opendir($this->_config["tmp"]);
+		while ($rd=readdir($od))
+		{
+			if ($rd!="." AND $rd!="..")
+			{
+				if (filemtime($this->_config["tmp"].$rd)<=  (time()-$this->_config["tmp_age"]) )
+				{
+					unlink($this->_config["tmp"].$rd);
+				}
+			}
+		}
+		closedir($od);
 	}
 }
