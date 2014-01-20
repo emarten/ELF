@@ -1,5 +1,5 @@
 ELF Magic
-===
+---
 
 Eric's Lightweight Framework - short "Magic" .. no, wait .. ELF!
 
