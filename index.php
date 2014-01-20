@@ -5,7 +5,7 @@
 		"tmp"=>dirname(__FILE__)."/tmp/",
 		"debug"=>true,
 		"debug_flush"=>true,
-		"tmp_age"=>1,
+		"tmp_age"=>(1*60),
 	);
 
 	include(dirname(__FILE__)."/elf-runtime/inc.php");

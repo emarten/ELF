@@ -1,0 +1,15 @@
+===================================
+Instance by 213.61.213.158
+20.01.2014 16:50:34
+===================================
+Starting ELF in mode: standalone
+Loading class: RequestReader
+ELF->test(Array
+(
+    [0] => 
+)
+);
+ELF->tmp_clean(Array
+(
+)
+);

@@ -17,6 +17,7 @@ class ELF
 	{
 		$this->_DEBUG=new DEBUG();
 		$this->_DEBUG->add("Starting ELF in mode: ".$this->_config["mode"]);
+		$this->_REQUEST=new RequestReader();
 	}
 	public function __call($method,$args)
 	{
