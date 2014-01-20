@@ -15,7 +15,9 @@
 	if (!isset($_ELF["debug_flush"])) { $_ELF["debug_flush"]=false; }
 
 
-
+/**
+ * Handles Calls
+ */
 	function call($class,$method,$args)
 	{
 		global $_ELF;
