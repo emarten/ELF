@@ -4,6 +4,7 @@ class ELF
 {
 	public function __construct($data)
 	{
+		$this->_startTime=microtime(true);
 		ob_start();
 		$this->_instance=date("d.m.Y-H.i.s").substr(microtime(true),strlen(time()))."_".md5(microtime(true).rand(1,9999));
 		$this->_init=$data["_init"];
@@ -32,6 +33,9 @@ class ELF
 	public function shutdown()
 	{
 		if ($this->_config["tmp_clean"]){$this->tmp_clean();}
+		$this->_stopTime=  microtime(true);
+		$this->_runTime=($this->_stopTime - $this->_startTime);
+		$this->_runTimeMS=substr( ($this->_runTime/1000)  , 0 , 4)."ms";
 		if ($this->_config["debug_flush"]) {
 			echo $this->_DEBUG->flush("<hr />"."<h1>DEBUG</h1>"."<hr />");
 		}
