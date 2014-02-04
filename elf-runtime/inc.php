@@ -101,7 +101,7 @@
 	spl_autoload_register("autoloading");
 
 	$_ELF=new ELF($_ELF);
-	$_ELF->start($_ELF->_config["mode"]);
+	$_ELF->start();
 	$_ELF->test('');
 
 	$_ELF->shutdown();
