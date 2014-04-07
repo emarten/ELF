@@ -1,0 +1,67 @@
+/* 
+    Document   : style
+    Created on : 01.04.2014, 13:18:33
+    Author     : Eric
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+h1 a, h1 a:hover { color:#333; outline: none; text-decoration: none; }
+
+.rotate {
+-moz-transform:rotate(30deg); /* Firefox 3.6 Firefox 4 */
+-webkit-transform:rotate(30deg); /* Safari */
+-o-transform:rotate(30deg); /* Opera */
+-ms-transform:rotate(30deg); /* IE9 */
+transform:rotate(30deg); /* W3C */
+} 
+.shadow
+{
+	-webkit-box-shadow: 2px 2px 2px 2px #919191;
+	box-shadow: 2px 2px 2px 2px #919191;
+}
+
+#mainnav > ul { list-style: none; margin:0; padding:0; float:left; }
+#login {
+  float: right;
+  position: relative;
+  left: 40px;
+}
+
+.clearBoth, .clear-both, .clearfix
+{
+	clear:both;
+	height:0px;
+	margin:0;padding:0;
+	overflow:hidden;
+	width:0px;
+}
+
+#header
+{
+	height:50px;
+	background:rgba(255,255,255,0.8);
+	position:fixed;
+	top:0;left:0;
+	width:100%;
+	border-bottom:solid 1px #f1f1f1;
+}
+#header > div { width:550px; margin:0 auto; padding:0 10px;  }
+
+#login, #login a, #login input { font-size: 10px; line-height: 10px; }
+#login input { height:12px; border:1px solid #ccc; }
+#login > form > div { width:300px; }
+#loginbtn {
+	float: right;
+	font-size: 12px;
+	height: 27px;
+	left: -35px;
+	line-height: 10px;
+	padding: 8px;
+	position: relative;
+	top: 7px;
+}

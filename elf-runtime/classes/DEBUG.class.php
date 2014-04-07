@@ -18,10 +18,12 @@ class DEBUG
 		if ($_ELF->_config["debug"])
 		{
 			$fp=fopen($this->file,"a");
-			fwrite($fp,$add."\n");
+			fwrite($fp,  $add."\n");
 			fclose($fp);
 		}
 	}
+
+	
 	public function flush($pre="",$post="")
 	{
 		global $_ELF;
@@ -38,7 +40,7 @@ class DEBUG
 				}
 			fclose($fp);
 			echo "-------------------------------------------------------------------\n";
-			print_r($_ELF);
+			echo htmlspecialchars( print_r($_ELF,true) );
 			echo "</pre>";
 			echo $post;
 			return "<div style=\"margin:20px; border:solid 1px black; padding:20px;\">".(ob_get_clean())."</div>";

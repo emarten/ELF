@@ -1,5 +1,7 @@
 <?php
 
+	include(dirname(__FILE__)."/functions/inc.php");
+
 	if (!isset($_ELF)){$_ELF=array();}
 
 	$_ELF["_init"]=array();
@@ -61,32 +63,49 @@
 		}
 
 		eval("?>".substr($method_code,strlen($pre_php[0])));
+
+		if (isset($return)) { return $return; }
+		else
+		{
+			return false;
+		}
 	}
 
 	function autoloading($class)
 	{
 		global $_ELF;
-		$locations=array(dirname(__FILE__)."/classes/");
+		$locations=array();
+		$engine_locations=array(dirname(__FILE__)."/classes/");
 		if (isset($_ELF))
 		{
 			if(is_object($_ELF))
 			{
+				if (sizeof($_ELF->_classes)<=0)
+				{
+					foreach ($engine_locations as $location)
+					{
+						array_push($_ELF->_classes,$location);
+					}
+				}
 				foreach($_ELF->_classes as $location)
 				{
 					array_push($locations,$location);
 				}
 			}
 		}
+		if (sizeof($locations)<=0) {
+			$locations=$engine_locations;
+		}
 		$found=false;
 		foreach($locations as $location)
 		{
-			if (file_exists($location))
+			if (file_exists($location.$class.".class.php"))
 			{
 				include($location.$class.".class.php");
 				$found=true;
 			}
 		}
-		if ($class!="ELF" AND $class!="DEBUG")
+		if ($class!="ELF" AND $class!="DEBUG" AND isset($_ELF->_DEBUG))
 		{
 			if ($found)
 			{
@@ -100,9 +119,12 @@
 	}
 	spl_autoload_register("autoloading");
 
-	$_ELF=new ELF($_ELF);
+	$data=$_ELF;
+	$_ELF=new ELF();
+	$_ELF->pre_start($data);
+	unset($data);
 	$_ELF->start();
-	$_ELF->test('');
+	#$_ELF->test('');
 
 	$_ELF->shutdown();
 

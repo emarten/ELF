@@ -1,7 +1,7 @@
 <?php
 
 	$_ELF=array(
-		"software"=>"modul_nummer_1",
+		"data"=>dirname(__FILE__)."/elf-data/",
 		"tmp"=>dirname(__FILE__)."/tmp/",
 		"debug"=>true,
 		"debug_flush"=>true,
